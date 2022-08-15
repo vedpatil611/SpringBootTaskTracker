@@ -37,6 +37,7 @@ public class TaskController {
 	
 	@DeleteMapping("/tasks")
 	public ResponseEntity<String> DeleteTask(@RequestBody Integer id) throws TaskTrackerException {
+		taskService.deleteTask(id);
 		return new ResponseEntity<>("Task deleted successfully", HttpStatus.OK);
 	}
  }
