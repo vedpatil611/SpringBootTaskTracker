@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.barclays.tasktracker</groupId>
-	<artifactId>JenkinsDemo</artifactId>
+	<artifactId>TaskTracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>JenkinsDemo</name>
+	<name>TaskTracker</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -54,4 +54,7 @@
 		</plugins>
 	</build>
 
+	<scm>
+		<url>https://github.com/vedpatil611/SpringBootTaskTracker</url>
+	</scm>
 </project>

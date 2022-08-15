@@ -8,4 +8,5 @@ import com.barclays.tasktracker.exception.TaskTrackerException;
 public interface TaskService {
 	public List<TaskDTO> getAllTasks() throws TaskTrackerException;
 	public Integer addTask(TaskDTO task) throws TaskTrackerException;
+	public void deleteTask(Integer id) throws TaskTrackerException;
 }

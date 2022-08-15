@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,5 +33,10 @@ public class TaskController {
 	public ResponseEntity<String> AddTask(@RequestBody TaskDTO task) throws TaskTrackerException {
 		Integer id = taskService.addTask(task);
 		return new ResponseEntity<>("Task created successfully", HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/tasks")
+	public ResponseEntity<String> DeleteTask(@RequestBody Integer id) throws TaskTrackerException {
+		return new ResponseEntity<>("Task deleted successfully", HttpStatus.OK);
 	}
  }
