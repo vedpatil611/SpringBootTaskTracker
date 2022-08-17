@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +29,16 @@ public class TaskController {
 		return new ResponseEntity<>(tasks, HttpStatus.OK);
 	}
 	
+	@GetMapping("/task/{id}")
+	public ResponseEntity<TaskDTO> GetTask(@PathVariable Integer id) throws TaskTrackerException {
+		TaskDTO task = taskService.getTask(id);
+		return new ResponseEntity<>(task, HttpStatus.OK);
+	}
+
 	@PostMapping("/tasks")
 	public ResponseEntity<String> AddTask(@RequestBody TaskDTO task) throws TaskTrackerException {
 		Integer id = taskService.addTask(task);
-		return new ResponseEntity<>("Task created successfully", HttpStatus.OK);
+		String message = "Task created successfully: " + id;
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
  }

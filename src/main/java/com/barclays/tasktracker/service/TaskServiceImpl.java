@@ -2,6 +2,7 @@ package com.barclays.tasktracker.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,21 @@ public class TaskServiceImpl implements TaskService {
 			throw new TaskTrackerException("Task Not Found");
 		
 		return tasks;
+	}
+	
+	@Override
+	public TaskDTO getTask(Integer id) throws TaskTrackerException {
+		Optional<Task> opt = taskRepository.findById(id);
+		if (opt.isEmpty())
+			throw new TaskTrackerException("Task not found");
+		
+		Task t = opt.get();
+		TaskDTO task = new TaskDTO();
+		task.setTaskId(t.getTaskId());
+		task.setTaskName(t.getTaskName());
+		task.setTaskDate(t.getTaskDate());
+		
+		return task;
 	}
 
 	@Override
