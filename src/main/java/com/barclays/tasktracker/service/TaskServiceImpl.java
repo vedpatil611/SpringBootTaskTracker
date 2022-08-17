@@ -42,7 +42,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public TaskDTO getTask(Integer id) throws TaskTrackerException {
 		Optional<Task> opt = taskRepository.findById(id);
-		if (opt.isEmpty())
+		if (opt.isPresent())
 			throw new TaskTrackerException("Task not found");
 		
 		Task t = opt.get();
