@@ -66,4 +66,9 @@ public class TaskServiceImpl implements TaskService {
 		return newTask.getTaskId();
 	}
 
+	@Override
+	public void deleteTask(Integer id) throws TaskTrackerException {
+		taskRepository.deleteById(id);	
+	}
+
 }
